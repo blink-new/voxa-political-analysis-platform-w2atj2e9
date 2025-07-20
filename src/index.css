@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Voxa Color Palette */
+  --primary: 240 27% 20%; /* #1E1B4B */
+  --accent: 258 90% 66%; /* #7C3AED */
+  --background: 240 44% 9%; /* #0F0F23 */
+  --dark-mode: 0 0% 2%; /* #050505 */
+  
+  /* UI Colors */
+  --foreground: 0 0% 98%;
+  --card: 240 27% 20%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 27% 20%;
+  --popover-foreground: 0 0% 98%;
+  --muted: 240 27% 15%;
+  --muted-foreground: 240 5% 64.9%;
+  --border: 240 27% 18%;
+  --input: 240 27% 18%;
+  --ring: 258 90% 66%;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  font-variation-settings: 'opsz' 32;
+}
+
+/* Custom Voxa Gradients */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary) / 80%) 0%, 
+    hsl(var(--accent) / 60%) 50%,
+    hsl(var(--primary) / 90%) 100%
+  );
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, #a855f7 100%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated Background */
+.animated-bg {
+  background: linear-gradient(-45deg, 
+    hsl(var(--background)), 
+    hsl(var(--primary) / 80%), 
+    hsl(var(--accent) / 60%), 
+    hsl(var(--primary))
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { 
+    background-position: 0% 50%; 
+  }
+
+  50% { 
+    background-position: 100% 50%; 
+  }
+
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+/* Particle Animation */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: hsl(var(--accent) / 60%);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 0%; 
+  }
+
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 100%; 
+  }
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px hsl(var(--accent) / 10%), 0 10px 10px -5px hsl(var(--accent) / 4%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 60%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 80%);
+}
